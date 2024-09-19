@@ -8,7 +8,7 @@
 	<body>
 		<h1>Simple Calculator</h1>
 
-		<form method="GET" action="{{ path('app_calculator') }}">
+		<form id="calculatorForm" method="GET" action="{{ path('app_calculator') }}">
 			<label for="num1">Number 1:</label>
 			<input type="number" id="num1" name="num1" value="{{ num1 ?? '' }}" required>
 			<br><br>

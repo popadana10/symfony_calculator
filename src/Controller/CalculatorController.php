@@ -1,5 +1,5 @@
 <?php
-
+// src/Controller/CalculatorController.php
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,8 +34,11 @@ class CalculatorController extends AbstractController
                 default:
                     $result = 'Invalid operation';
             }
-        }
 
+            $num1 = null;
+            $num2 = null;
+            $operation = null;
+        }
         return $this->render('calculator/index.html.twig', [
             'result' => $result,
             'num1' => $num1,
