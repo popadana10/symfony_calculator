@@ -1,20 +1,36 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Simple Calculator</title>
+	</head>
+	<body>
+		<h1>Simple Calculator</h1>
 
-{% block title %}Hello CalculatorController!{% endblock %}
+		<form method="GET" action="{{ path('app_calculator') }}">
+			<label for="num1">Number 1:</label>
+			<input type="number" id="num1" name="num1" value="{{ num1 ?? '' }}" required>
+			<br><br>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+			<label for="num2">Number 2:</label>
+			<input type="number" id="num2" name="num2" value="{{ num2 ?? '' }}" required>
+			<br><br>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+			<label for="operation">Operation:</label>
+			<select id="operation" name="operation" required>
+				<option value="add" {% if operation == 'add' %} selected {% endif %}>Addition</option>
+				<option value="subtract" {% if operation == 'subtract' %} selected {% endif %}>Subtraction</option>
+				<option value="multiply" {% if operation == 'multiply' %} selected {% endif %}>Multiplication</option>
+				<option value="divide" {% if operation == 'divide' %} selected {% endif %}>Division</option>
+			</select>
+			<br><br>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/s2400065/Documents/symfony_calculator/src/Controller/CalculatorController.php</code></li>
-        <li>Your template at <code>/Users/s2400065/Documents/symfony_calculator/templates/calculator/index.html.twig</code></li>
-    </ul>
-</div>
-{% endblock %}
+			<button type="submit">Calculate</button>
+		</form>
+
+		{% if result is not null %}
+			<h2>Result:
+				{{ result }}</h2>
+		{% endif %}
+	</body>
+</html>
